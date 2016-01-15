@@ -159,6 +159,7 @@ public abstract class Generator : MonoBehaviour {
 	{
         // Refresh with inspector values
 		if (Input.GetKeyDown (KeyCode.F5)) {
+            Seed = UnityEngine.Random.Range(0, int.MaxValue);
             Initialize();
             Generate();
 		}
