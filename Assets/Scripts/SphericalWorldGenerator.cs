@@ -99,8 +99,8 @@ public class SphericalWorldGenerator : Generator {
 		float lonExtent = eastLonBound - westLonBound;
 		float latExtent = northLatBound - southLatBound;
 		
-		float xDelta = latExtent / (float)Width;
-		float yDelta = lonExtent / (float)Height;
+		float xDelta = lonExtent / (float)Width;
+		float yDelta = latExtent / (float)Height;
 		
 		float curLon = westLonBound;
 		float curLat = southLatBound;
