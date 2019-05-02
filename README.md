@@ -8,3 +8,4 @@ http://www.jgallant.com/procedurally-generating-wrapping-world-maps-in-unity-csh
 
 ![Example](http://www.jgallant.com/wp-content/uploads/2019/05/worldgen1.png "Example")
 
+Sphere mesh taken from:  https://www.binpress.com/creating-octahedron-sphere-unity/
