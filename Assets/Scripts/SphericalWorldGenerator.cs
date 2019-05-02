@@ -24,6 +24,10 @@ public class SphericalWorldGenerator : Generator {
 
         BumpTexture = transform.Find("BumpTexture").GetComponent<MeshRenderer>();
         PaletteTexture = transform.Find("PaletteTexture").GetComponent<MeshRenderer>();
+
+        Sphere.transform.GetComponent<MeshFilter>().mesh = OctahedronSphereCreator.Create(4, 0.5f);
+        Atmosphere1.transform.GetComponent<MeshFilter>().mesh = OctahedronSphereCreator.Create(4, 0.5f);
+        Atmosphere2.transform.GetComponent<MeshFilter>().mesh = OctahedronSphereCreator.Create(4, 0.5f);
     }
 
 	protected override void Generate()
@@ -168,17 +172,11 @@ public class SphericalWorldGenerator : Generator {
 	// Convert Lat/Long coordinates to x/y/z for spherical mapping
 	void LatLonToXYZ(float lat, float lon, ref float x, ref float y, ref float z)
 	{
-		float r = Mathf.Cos(Mathf.Deg2Rad * lon);
-
-		//Longitude Optimization
-		float sin = Mathf.Sqrt(1 * 1 - r * r);
-		if (lon < 0)
-		    sin = -sin;
-
-		x = r * Mathf.Cos(Mathf.Deg2Rad * lat);
-		y = sin;
-		z = r * Mathf.Sin(Mathf.Deg2Rad * lat);
-	}
+        float r = Mathf.Cos(Mathf.Deg2Rad * lon);
+        x = r * Mathf.Cos(Mathf.Deg2Rad * lat);
+        y = Mathf.Sin(Mathf.Deg2Rad * lon);
+        z = r * Mathf.Sin(Mathf.Deg2Rad * lat);
+    }
     
 	protected override Tile GetTop(Tile t)
 	{
